@@ -16,6 +16,7 @@ namespace basededatos
         public CosasContext(DbContextOptions<CosasContext> options) : base(options) { }
         public DbSet<CosasItem> Cosas { get; set; }
         public DbSet<UserItem> Users { get; set; }
+        public DbSet<SessionItem> Sessions { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             foreach (var relationship in builder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))

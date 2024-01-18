@@ -1,5 +1,6 @@
 ﻿using DTOs;
 using Mapeos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Stores;
@@ -8,6 +9,7 @@ using Stores;
 
 namespace cursonetcore.Controllers
 {
+    [Authorize]
     [Route("[controller]/[action]")]
     [ApiController]
     public class CosasController : ControllerBase

@@ -64,8 +64,8 @@ namespace Logica.Session
              */
 
             // Clase 9: Primero se recuperan los datos de configuración para el JWT.
-            //Jwt? jwt = _configuration.GetSection("Jwt").Get<Jwt>();
-            Jwt? jwt = (Jwt?)_configuration.GetSection("Jwt");
+            Jwt? jwt = _configuration.GetSection("Jwt").Get<Jwt>();
+            //Jwt? jwt = (Jwt?)_configuration.GetSection("Jwt");//Tommy way
             if (jwt == null
                 || string.IsNullOrEmpty(jwt.Key)
                 || string.IsNullOrEmpty(jwt.Subject)

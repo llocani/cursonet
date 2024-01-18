@@ -63,19 +63,19 @@ namespace cursonetcore
                 });
 
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
                 {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
             });
 
             /* Clase 9: El siguiente fragmento (invocación) de datos configura el 
@@ -124,7 +124,7 @@ namespace cursonetcore
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             /* Clase 11: Los middleware se cargan usando metodos que geenralmente comienzan con Use...
              * Así mismo pueden cargarse usando él método UseMiddleware o usando una extensión ad hoc

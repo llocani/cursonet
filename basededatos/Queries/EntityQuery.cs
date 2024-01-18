@@ -43,7 +43,16 @@ namespace Data.Queries
         }
         public IQueryable<T> GetAll()
         {
-            return _serviceContext.Set<T>();
+            try
+            {
+            var result = _serviceContext.Set<T>();
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
         public IQueryable<T> GetAllUntracked()
         {

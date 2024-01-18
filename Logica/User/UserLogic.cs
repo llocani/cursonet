@@ -13,6 +13,7 @@ namespace Logica.User
         public UserLogic(IUserStore userStore, IMapeosUser mapeosUser)
         {
             _mapeosUser = mapeosUser;
+            _userStore = userStore;
         }
 
         UserItem IUserLogic.Create(UserItemDto userDto)
@@ -38,6 +39,7 @@ namespace Logica.User
             }
 
             UserItem userItem = _mapeosUser.UserItemaDtoAUserItem(userDto);
+            userItem.PasswordHash = PasswordHash.Hash(userDto.Password);
             _userStore.InsertUser(userItem);
 
             return userItem;
@@ -60,10 +62,14 @@ namespace Logica.User
 
         UserItem? IUserLogic.GetForUsername(string username)
         {
-            return (from u in _userStore.GetAllUser()
-                    where (u.ExpiredAt == null || u.ExpiredAt > DateTime.Now)
-                        && u.Username == username
-                    select u).FirstOrDefault();
+            
+            var todosLosUsuarios = _userStore.GetAllUser();
+            var usuarios = from u in todosLosUsuarios
+                           where (u.ExpiredAt == null || u.ExpiredAt > DateTime.Now)
+                               && u.Username == username
+                           select u;
+            var usuario_elegido= usuarios.FirstOrDefault();
+            return usuario_elegido;
         }
 
         void IUserLogic.Delete(long id)
