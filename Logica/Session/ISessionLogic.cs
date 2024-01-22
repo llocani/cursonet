@@ -1,7 +1,9 @@
-﻿namespace Logica.Session
+﻿using DTOs;
+
+namespace Logica.Session
 {
     public interface ISessionLogic
     {
-        LoginResponse Login(LoginRequest login);
+        LoginResponse Login(LoginDto login);
     }
 }

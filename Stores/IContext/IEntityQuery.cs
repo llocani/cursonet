@@ -11,7 +11,7 @@ namespace Stores.IContext
         List<Item> ToList(IQueryable<Item> itemsList);
         Item? GetFirstOrDefault(Expression<Func<Item, bool>> funcPred);
         Item? GetFirstOrDefaultUntracked(Expression<Func<Item, bool>> funcPred);
-        void AddItem(Item item);
+        Item AddItem(Item item);
         void AddItems(List<Item> itemsList);
         void UpdateItem(Item item);
         void UpdateItems(List<Item> itemsList);

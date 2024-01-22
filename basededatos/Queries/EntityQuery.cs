@@ -13,21 +13,35 @@ namespace Data.Queries
         {
             _serviceContext = serviceContext;
         }
-        public void AddItem(T item)
+        public T AddItem(T item)
         {
-            _serviceContext.Set<T>().Add(item);
+            try
+            {
+                var itemnuevo = _serviceContext.Set<T>().Add(item).Entity;
+                _serviceContext.SaveChanges();
+                return itemnuevo;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
         }
         public void AddItems(List<T> itemsList)
         {
             _serviceContext.Set<T>().AddRange(itemsList);
+            _serviceContext.SaveChanges();
         }
         public void DeleteItem(T item)
         {
             _serviceContext.Set<T>().Remove(item);
+            _serviceContext.SaveChanges();
         }
         public void DeleteItems(List<T> itemsList)
         {
             _serviceContext.Set<T>().RemoveRange(itemsList);
+            _serviceContext.SaveChanges();
         }
         public  T? GetFirstOrDefaultUntracked(Expression<Func<T, bool>> funcPred)
         {
@@ -36,6 +50,7 @@ namespace Data.Queries
         public void UpdateItem(T item)
         {
             _serviceContext.Set<T>().Update(item);
+            _serviceContext.SaveChanges();
         }
         public void UpdateItems(List<T> itemsList)
         {

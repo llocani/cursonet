@@ -1,4 +1,5 @@
-﻿using Logica.Session;
+﻿using DTOs;
+using Logica.Session;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +25,7 @@ namespace cursonetcore.Controllers
         // Clase 9: La decoración [AllowAnonymous] indica que para este endpoint específico no es necesario estar autentificado independientemente de la configuración del controlador
         [AllowAnonymous]
         [HttpPost]
-        public LoginResponse Login(LoginRequest user)
+        public LoginResponse Login(LoginDto user)
         {
             return _sessionLogic.Login(user);
         }

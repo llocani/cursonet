@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using DTOs;
+using Entidades;
 using Logica.User;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -29,7 +30,7 @@ namespace Logica.Session
             _configuration = configuration;
         }
 
-        LoginResponse ISessionLogic.Login(LoginRequest login)
+        LoginResponse ISessionLogic.Login(LoginDto login)
         {
             if (String.IsNullOrWhiteSpace(login.Username))
             {

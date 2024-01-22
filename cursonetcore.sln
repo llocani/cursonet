@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mapeos", "Mapeos\Mapeos.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTOs", "DTOs\DTOs.csproj", "{27B03AB1-9600-41F1-8451-EF64F1969864}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{D8E287B5-458F-4226-845C-340F9955CE3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logica", "Logica\Logica.csproj", "{D8E287B5-458F-4226-845C-340F9955CE3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoresTests", "StoresTests\StoresTests.csproj", "{E1349CE4-28DE-49E9-B098-404EB587B411}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemDB", "MemDB\MemDB.csproj", "{68D25C9F-AE51-4214-947B-4AAB23C16638}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{D8E287B5-458F-4226-845C-340F9955CE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8E287B5-458F-4226-845C-340F9955CE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8E287B5-458F-4226-845C-340F9955CE3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1349CE4-28DE-49E9-B098-404EB587B411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1349CE4-28DE-49E9-B098-404EB587B411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1349CE4-28DE-49E9-B098-404EB587B411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1349CE4-28DE-49E9-B098-404EB587B411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D25C9F-AE51-4214-947B-4AAB23C16638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D25C9F-AE51-4214-947B-4AAB23C16638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D25C9F-AE51-4214-947B-4AAB23C16638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D25C9F-AE51-4214-947B-4AAB23C16638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

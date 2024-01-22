@@ -1,5 +1,3 @@
-using cursonetcore.IServicios;
-using cursonetcore.Servicios;
 using Entidades;
 using Stores;
 using Microsoft.AspNetCore.Cors.Infrastructure;
@@ -15,6 +13,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using cursonetcore.Middleware;
 using Logica.User;
+using Logica.Policies;
+using Microsoft.AspNetCore.Authorization;
 
 namespace cursonetcore
 {
@@ -116,6 +116,21 @@ namespace cursonetcore
                 });
 
 
+
+            /* Clase 14: Authorización basada en políticas, primero se inyecta como dependencia el manipulador de la política, 
+             * este manipulador estña relacionado con la clase RoleRequirement que se usa para definir las políticas.
+             */
+            builder.Services.AddScoped<IAuthorizationHandler, RoleHandler>();
+
+            // Clase 14: Authorización basada en políticas, se define la política que requiere el rol admin. Pueden definirse otras para otros roles.
+            builder.Services.AddAuthorization(options =>
+                options.AddPolicy("AdminRole", policy => policy.Requirements.Add(new RoleRequirement("admin"))));
+
+            builder.Services.AddAuthorization(options =>
+                options.AddPolicy("OperatorRole", policy => policy.Requirements.Add(new RoleRequirement("operator"))));
+
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -124,7 +139,7 @@ namespace cursonetcore
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             /* Clase 11: Los middleware se cargan usando metodos que geenralmente comienzan con Use...
              * Así mismo pueden cargarse usando él método UseMiddleware o usando una extensión ad hoc

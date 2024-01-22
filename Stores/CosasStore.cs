@@ -5,12 +5,10 @@ namespace Stores
 {
     public class CosasStore : ICosasStore
     {
-        private readonly ITransactionQuery _transactionQuery;
         private readonly IEntityQuery<CosasItem> _cosasQuery;
-        public CosasStore(ITransactionQuery transactionQuery,
+        public CosasStore(
                          IEntityQuery<CosasItem> entityQuery)
         {
-            _transactionQuery = transactionQuery;
             _cosasQuery = entityQuery;
         }
         public List<CosasItem> GetAllCosas()
@@ -20,8 +18,8 @@ namespace Stores
 
         public CosasItem InsertCosas(CosasItem cosasItem)
         {
-            _cosasQuery.AddItem(cosasItem);
-            return cosasItem;
+            var nuevaCosa = _cosasQuery.AddItem(cosasItem);
+            return nuevaCosa;
         }
 
         public CosasItem UpdateCosas(CosasItem cosasItem)

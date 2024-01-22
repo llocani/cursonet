@@ -33,6 +33,7 @@ namespace cursonetcore.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminRole")]
         public CosasItemDto InsertCosas(CosasItemDto cosasItemDto)
         {
             var cosasItem = _mapeosCosas.CosasItemaDtoACosasItem(cosasItemDto);
@@ -42,6 +43,7 @@ namespace cursonetcore.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminRole")]
         public CosasItemDto UpdateCosas(CosasItemDto cosasItemDto)
         {
             var cosasItem = _mapeosCosas.CosasItemaDtoACosasItem(cosasItemDto);

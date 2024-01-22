@@ -1,6 +1,6 @@
-﻿namespace Logica.Session
+﻿namespace DTOs
 {
-    public class LoginRequest
+    public class LoginDto
     {
         public string Username { get; set; } = "";
         public string Password { get; set; } = "";
