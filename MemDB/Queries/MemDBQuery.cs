@@ -10,6 +10,7 @@ namespace MemDB.Queries
     {
         static List<Item> _lista = new List<Item>();
 
+
         public Item AddItem(Item item)
         {
             //if (item != null) {

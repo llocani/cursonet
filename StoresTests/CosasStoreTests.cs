@@ -25,8 +25,12 @@ namespace Stores.Tests
         CosasStore _store;
         public CosasStoreTests()
         {
-            var cosasDB = new MemDBQuery<CosasItem>();
-            _store = new CosasStore(cosasDB);
+            //var cosasDB = new MemDBQuery<CosasItem>();
+            var optionsBuilder = new DbContextOptionsBuilder<CosasContext>();
+            optionsBuilder.UseSqlServer("Data source=NB0001247399\\SQLEXPRESS; initial catalog=netcore;integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework;TrustServerCertificate=True");
+            CosasContext dataContext = new CosasContext(optionsBuilder.Options);
+            var enriryQuery = new EntityQuery<CosasItem>(dataContext);
+            _store = new CosasStore(enriryQuery);
         }
 
         [TestMethod()]
@@ -50,21 +54,24 @@ namespace Stores.Tests
             try
             {
                 // Arrange - Preparar
-                var cosas = _store.GetAllCosas();
-                var maxId = 0;
-                foreach(var cosa in cosas)
-                {
-                    if (cosa.Id >maxId) maxId= cosa.Id;
-                }
+                //var cosas = _store.GetAllCosas();
+                //var maxId = 0;
+                //foreach(var cosa in cosas)
+                //{
+                //    if (cosa.Id >maxId) maxId= cosa.Id;
+                //}
+                //var cosaNueva = new CosasItem()
+                //{
+                //    Id = maxId+1, 
+                //    CosasDescripcion="cosa1"
+                //};
                 var cosaNueva = new CosasItem()
                 {
-                    Id = maxId+1, 
-                    CosasDescripcion="cosa1"
+                    CosasDescripcion = "cosa1"
                 };
-
                 // Act - Ejecutar
                 var nuevaCosa = _store.InsertCosas(cosaNueva);
-                Assert.IsInstanceOfType(cosas, typeof(IEnumerable<CosasItem>));
+                Assert.IsInstanceOfType(nuevaCosa, typeof(CosasItem));
             }
             catch (Exception ex)
             {
@@ -75,7 +82,19 @@ namespace Stores.Tests
         [TestMethod()]
         public void UpdateCosasTest()
         {
-            Assert.Fail();
+            
+                var cosa = _store.GetAllCosas().First();
+                cosa.Id = -1;
+                cosa.CosasDescripcion = "lalalalala";
+            Assert.ThrowsException<System.InvalidOperationException>(() =>
+            {
+                var nuevaCosa = _store.UpdateCosas(cosa);
+
+            });
+                
+            
+            
+
         }
     }
 }
